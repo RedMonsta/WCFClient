@@ -1,0 +1,16 @@
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\obj\Debug\WCFClient.Form1.resources
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\obj\Debug\WCFClient.Properties.Resources.resources
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\obj\Debug\WCFClient.csproj.GenerateResource.Cache
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\WCFClient.exe.config
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\WCFClient.exe
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\WCFClient.pdb
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\DataModel.dll
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\Newtonsoft.Json.dll
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\EntityFramework.dll
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\DataModel.pdb
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\DataModel.dll.config
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\Newtonsoft.Json.xml
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\bin\Debug\EntityFramework.xml
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\obj\Debug\WCFClient.exe
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\obj\Debug\WCFClient.pdb
+D:\БГУИР\GitHub\GitHubKSiS\Lab3\WCFClient\WCFClient\obj\Debug\WCFClient.csprojResolveAssemblyReference.cache
