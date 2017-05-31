@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddUser">
     <xs:complexType>
       <xs:sequence>
@@ -35,8 +47,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="goodname" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="UserId" type="xs:int" />
-        <xs:element minOccurs="0" name="AddrId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,7 +99,37 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddAddressUserLink">
+  <xs:element name="AddOrderToUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OrdId" type="xs:int" />
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOrderToUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddOrderToUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAddressToUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddrId" type="xs:int" />
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAddressToUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddAddressToUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserToAddress">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="UserId" type="xs:int" />
@@ -97,36 +137,85 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddAddressUserLinkResponse">
+  <xs:element name="AddUserToAddressResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddAddressUserLinkResult" type="xs:int" />
+        <xs:element minOccurs="0" name="AddUserToAddressResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RemoveAddressUserLink">
+  <xs:element name="AddOrderToAddress">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="LinkId" type="xs:int" />
+        <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+        <xs:element minOccurs="0" name="AddrId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RemoveAddressUserLinkResponse">
+  <xs:element name="AddOrderToAddressResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RemoveAddressUserLinkResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AddOrderToAddressResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetData">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataResponse">
+  <xs:element name="RemoveOrderFromUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OrdId" type="xs:int" />
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOrderFromUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveOrderFromUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAddressFromUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddrId" type="xs:int" />
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAddressFromUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveAddressFromUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserFromAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="AddrId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserFromAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveUserFromAddressResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOrderFromAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+        <xs:element minOccurs="0" name="AddrId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOrderFromAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveOrderFromAddressResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

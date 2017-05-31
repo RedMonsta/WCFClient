@@ -15,6 +15,12 @@ namespace WCFClient.WCFServiceLib {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFServiceLib.IWCFService")]
     public interface IWCFService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/GetData", ReplyAction="http://tempuri.org/IWCFService/GetDataResponse")]
+        string GetData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/GetData", ReplyAction="http://tempuri.org/IWCFService/GetDataResponse")]
+        System.Threading.Tasks.Task<string> GetDataAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddUser", ReplyAction="http://tempuri.org/IWCFService/AddUserResponse")]
         int AddUser(string name);
         
@@ -28,10 +34,10 @@ namespace WCFClient.WCFServiceLib {
         System.Threading.Tasks.Task<int> AddAddressAsync(string city, string street, int build, int flat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddOrder", ReplyAction="http://tempuri.org/IWCFService/AddOrderResponse")]
-        int AddOrder(string goodname, int UserId, int AddrId);
+        int AddOrder(string goodname);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddOrder", ReplyAction="http://tempuri.org/IWCFService/AddOrderResponse")]
-        System.Threading.Tasks.Task<int> AddOrderAsync(string goodname, int UserId, int AddrId);
+        System.Threading.Tasks.Task<int> AddOrderAsync(string goodname);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveUser", ReplyAction="http://tempuri.org/IWCFService/RemoveUserResponse")]
         bool RemoveUser(int UserId);
@@ -51,23 +57,53 @@ namespace WCFClient.WCFServiceLib {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveOrder", ReplyAction="http://tempuri.org/IWCFService/RemoveOrderResponse")]
         System.Threading.Tasks.Task<bool> RemoveOrderAsync(int OrdId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddAddressUserLink", ReplyAction="http://tempuri.org/IWCFService/AddAddressUserLinkResponse")]
-        int AddAddressUserLink(int UserId, int AddrId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddOrderToUser", ReplyAction="http://tempuri.org/IWCFService/AddOrderToUserResponse")]
+        bool AddOrderToUser(int OrdId, int UserId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddAddressUserLink", ReplyAction="http://tempuri.org/IWCFService/AddAddressUserLinkResponse")]
-        System.Threading.Tasks.Task<int> AddAddressUserLinkAsync(int UserId, int AddrId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddOrderToUser", ReplyAction="http://tempuri.org/IWCFService/AddOrderToUserResponse")]
+        System.Threading.Tasks.Task<bool> AddOrderToUserAsync(int OrdId, int UserId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveAddressUserLink", ReplyAction="http://tempuri.org/IWCFService/RemoveAddressUserLinkResponse")]
-        bool RemoveAddressUserLink(int LinkId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddAddressToUser", ReplyAction="http://tempuri.org/IWCFService/AddAddressToUserResponse")]
+        bool AddAddressToUser(int AddrId, int UserId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveAddressUserLink", ReplyAction="http://tempuri.org/IWCFService/RemoveAddressUserLinkResponse")]
-        System.Threading.Tasks.Task<bool> RemoveAddressUserLinkAsync(int LinkId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddAddressToUser", ReplyAction="http://tempuri.org/IWCFService/AddAddressToUserResponse")]
+        System.Threading.Tasks.Task<bool> AddAddressToUserAsync(int AddrId, int UserId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/GetData", ReplyAction="http://tempuri.org/IWCFService/GetDataResponse")]
-        string GetData();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddUserToAddress", ReplyAction="http://tempuri.org/IWCFService/AddUserToAddressResponse")]
+        bool AddUserToAddress(int UserId, int AddrId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/GetData", ReplyAction="http://tempuri.org/IWCFService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddUserToAddress", ReplyAction="http://tempuri.org/IWCFService/AddUserToAddressResponse")]
+        System.Threading.Tasks.Task<bool> AddUserToAddressAsync(int UserId, int AddrId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddOrderToAddress", ReplyAction="http://tempuri.org/IWCFService/AddOrderToAddressResponse")]
+        bool AddOrderToAddress(int OrderId, int AddrId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddOrderToAddress", ReplyAction="http://tempuri.org/IWCFService/AddOrderToAddressResponse")]
+        System.Threading.Tasks.Task<bool> AddOrderToAddressAsync(int OrderId, int AddrId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveOrderFromUser", ReplyAction="http://tempuri.org/IWCFService/RemoveOrderFromUserResponse")]
+        bool RemoveOrderFromUser(int OrdId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveOrderFromUser", ReplyAction="http://tempuri.org/IWCFService/RemoveOrderFromUserResponse")]
+        System.Threading.Tasks.Task<bool> RemoveOrderFromUserAsync(int OrdId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveAddressFromUser", ReplyAction="http://tempuri.org/IWCFService/RemoveAddressFromUserResponse")]
+        bool RemoveAddressFromUser(int AddrId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveAddressFromUser", ReplyAction="http://tempuri.org/IWCFService/RemoveAddressFromUserResponse")]
+        System.Threading.Tasks.Task<bool> RemoveAddressFromUserAsync(int AddrId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveUserFromAddress", ReplyAction="http://tempuri.org/IWCFService/RemoveUserFromAddressResponse")]
+        bool RemoveUserFromAddress(int UserId, int AddrId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveUserFromAddress", ReplyAction="http://tempuri.org/IWCFService/RemoveUserFromAddressResponse")]
+        System.Threading.Tasks.Task<bool> RemoveUserFromAddressAsync(int UserId, int AddrId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveOrderFromAddress", ReplyAction="http://tempuri.org/IWCFService/RemoveOrderFromAddressResponse")]
+        bool RemoveOrderFromAddress(int OrderId, int AddrId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/RemoveOrderFromAddress", ReplyAction="http://tempuri.org/IWCFService/RemoveOrderFromAddressResponse")]
+        System.Threading.Tasks.Task<bool> RemoveOrderFromAddressAsync(int OrderId, int AddrId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +133,14 @@ namespace WCFClient.WCFServiceLib {
                 base(binding, remoteAddress) {
         }
         
+        public string GetData() {
+            return base.Channel.GetData();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetDataAsync() {
+            return base.Channel.GetDataAsync();
+        }
+        
         public int AddUser(string name) {
             return base.Channel.AddUser(name);
         }
@@ -113,12 +157,12 @@ namespace WCFClient.WCFServiceLib {
             return base.Channel.AddAddressAsync(city, street, build, flat);
         }
         
-        public int AddOrder(string goodname, int UserId, int AddrId) {
-            return base.Channel.AddOrder(goodname, UserId, AddrId);
+        public int AddOrder(string goodname) {
+            return base.Channel.AddOrder(goodname);
         }
         
-        public System.Threading.Tasks.Task<int> AddOrderAsync(string goodname, int UserId, int AddrId) {
-            return base.Channel.AddOrderAsync(goodname, UserId, AddrId);
+        public System.Threading.Tasks.Task<int> AddOrderAsync(string goodname) {
+            return base.Channel.AddOrderAsync(goodname);
         }
         
         public bool RemoveUser(int UserId) {
@@ -145,28 +189,68 @@ namespace WCFClient.WCFServiceLib {
             return base.Channel.RemoveOrderAsync(OrdId);
         }
         
-        public int AddAddressUserLink(int UserId, int AddrId) {
-            return base.Channel.AddAddressUserLink(UserId, AddrId);
+        public bool AddOrderToUser(int OrdId, int UserId) {
+            return base.Channel.AddOrderToUser(OrdId, UserId);
         }
         
-        public System.Threading.Tasks.Task<int> AddAddressUserLinkAsync(int UserId, int AddrId) {
-            return base.Channel.AddAddressUserLinkAsync(UserId, AddrId);
+        public System.Threading.Tasks.Task<bool> AddOrderToUserAsync(int OrdId, int UserId) {
+            return base.Channel.AddOrderToUserAsync(OrdId, UserId);
         }
         
-        public bool RemoveAddressUserLink(int LinkId) {
-            return base.Channel.RemoveAddressUserLink(LinkId);
+        public bool AddAddressToUser(int AddrId, int UserId) {
+            return base.Channel.AddAddressToUser(AddrId, UserId);
         }
         
-        public System.Threading.Tasks.Task<bool> RemoveAddressUserLinkAsync(int LinkId) {
-            return base.Channel.RemoveAddressUserLinkAsync(LinkId);
+        public System.Threading.Tasks.Task<bool> AddAddressToUserAsync(int AddrId, int UserId) {
+            return base.Channel.AddAddressToUserAsync(AddrId, UserId);
         }
         
-        public string GetData() {
-            return base.Channel.GetData();
+        public bool AddUserToAddress(int UserId, int AddrId) {
+            return base.Channel.AddUserToAddress(UserId, AddrId);
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync() {
-            return base.Channel.GetDataAsync();
+        public System.Threading.Tasks.Task<bool> AddUserToAddressAsync(int UserId, int AddrId) {
+            return base.Channel.AddUserToAddressAsync(UserId, AddrId);
+        }
+        
+        public bool AddOrderToAddress(int OrderId, int AddrId) {
+            return base.Channel.AddOrderToAddress(OrderId, AddrId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddOrderToAddressAsync(int OrderId, int AddrId) {
+            return base.Channel.AddOrderToAddressAsync(OrderId, AddrId);
+        }
+        
+        public bool RemoveOrderFromUser(int OrdId, int UserId) {
+            return base.Channel.RemoveOrderFromUser(OrdId, UserId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveOrderFromUserAsync(int OrdId, int UserId) {
+            return base.Channel.RemoveOrderFromUserAsync(OrdId, UserId);
+        }
+        
+        public bool RemoveAddressFromUser(int AddrId, int UserId) {
+            return base.Channel.RemoveAddressFromUser(AddrId, UserId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveAddressFromUserAsync(int AddrId, int UserId) {
+            return base.Channel.RemoveAddressFromUserAsync(AddrId, UserId);
+        }
+        
+        public bool RemoveUserFromAddress(int UserId, int AddrId) {
+            return base.Channel.RemoveUserFromAddress(UserId, AddrId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveUserFromAddressAsync(int UserId, int AddrId) {
+            return base.Channel.RemoveUserFromAddressAsync(UserId, AddrId);
+        }
+        
+        public bool RemoveOrderFromAddress(int OrderId, int AddrId) {
+            return base.Channel.RemoveOrderFromAddress(OrderId, AddrId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveOrderFromAddressAsync(int OrderId, int AddrId) {
+            return base.Channel.RemoveOrderFromAddressAsync(OrderId, AddrId);
         }
     }
 }

@@ -35,6 +35,12 @@
       <xsd:import schemaLocation="http://127.0.0.1:7777/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IWCFService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
   <wsdl:message name="IWCFService_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
   </wsdl:message>
@@ -71,25 +77,59 @@
   <wsdl:message name="IWCFService_RemoveOrder_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveOrderResponse" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_AddAddressUserLink_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddAddressUserLink" />
+  <wsdl:message name="IWCFService_AddOrderToUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderToUser" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_AddAddressUserLink_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddAddressUserLinkResponse" />
+  <wsdl:message name="IWCFService_AddOrderToUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderToUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_RemoveAddressUserLink_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveAddressUserLink" />
+  <wsdl:message name="IWCFService_AddAddressToUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAddressToUser" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_RemoveAddressUserLink_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveAddressUserLinkResponse" />
+  <wsdl:message name="IWCFService_AddAddressToUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAddressToUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
+  <wsdl:message name="IWCFService_AddUserToAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToAddress" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  <wsdl:message name="IWCFService_AddUserToAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_AddOrderToAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderToAddress" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_AddOrderToAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderToAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveOrderFromUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOrderFromUser" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveOrderFromUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOrderFromUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveAddressFromUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAddressFromUser" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveAddressFromUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAddressFromUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveUserFromAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromAddress" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveUserFromAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveOrderFromAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOrderFromAddress" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_RemoveOrderFromAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOrderFromAddressResponse" />
   </wsdl:message>
   <wsdl:portType name="IWCFService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetData" message="tns:IWCFService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetDataResponse" message="tns:IWCFService_GetData_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddUser" message="tns:IWCFService_AddUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddUserResponse" message="tns:IWCFService_AddUser_OutputMessage" />
@@ -114,21 +154,50 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RemoveOrder" message="tns:IWCFService_RemoveOrder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RemoveOrderResponse" message="tns:IWCFService_RemoveOrder_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddAddressUserLink">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddAddressUserLink" message="tns:IWCFService_AddAddressUserLink_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddAddressUserLinkResponse" message="tns:IWCFService_AddAddressUserLink_OutputMessage" />
+    <wsdl:operation name="AddOrderToUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddOrderToUser" message="tns:IWCFService_AddOrderToUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddOrderToUserResponse" message="tns:IWCFService_AddOrderToUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="RemoveAddressUserLink">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RemoveAddressUserLink" message="tns:IWCFService_RemoveAddressUserLink_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RemoveAddressUserLinkResponse" message="tns:IWCFService_RemoveAddressUserLink_OutputMessage" />
+    <wsdl:operation name="AddAddressToUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddAddressToUser" message="tns:IWCFService_AddAddressToUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddAddressToUserResponse" message="tns:IWCFService_AddAddressToUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetData" message="tns:IWCFService_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetDataResponse" message="tns:IWCFService_GetData_OutputMessage" />
+    <wsdl:operation name="AddUserToAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddUserToAddress" message="tns:IWCFService_AddUserToAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddUserToAddressResponse" message="tns:IWCFService_AddUserToAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderToAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddOrderToAddress" message="tns:IWCFService_AddOrderToAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddOrderToAddressResponse" message="tns:IWCFService_AddOrderToAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrderFromUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RemoveOrderFromUser" message="tns:IWCFService_RemoveOrderFromUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RemoveOrderFromUserResponse" message="tns:IWCFService_RemoveOrderFromUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAddressFromUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RemoveAddressFromUser" message="tns:IWCFService_RemoveAddressFromUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RemoveAddressFromUserResponse" message="tns:IWCFService_RemoveAddressFromUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RemoveUserFromAddress" message="tns:IWCFService_RemoveUserFromAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RemoveUserFromAddressResponse" message="tns:IWCFService_RemoveUserFromAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrderFromAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/RemoveOrderFromAddress" message="tns:IWCFService_RemoveOrderFromAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/RemoveOrderFromAddressResponse" message="tns:IWCFService_RemoveOrderFromAddress_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWCFService" type="tns:IWCFService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap:operation soapAction="http://tempuri.org/IWCFService/AddUser" style="document" />
       <wsdl:input>
@@ -183,8 +252,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddAddressUserLink">
-      <soap:operation soapAction="http://tempuri.org/IWCFService/AddAddressUserLink" style="document" />
+    <wsdl:operation name="AddOrderToUser">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/AddOrderToUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -192,8 +261,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveAddressUserLink">
-      <soap:operation soapAction="http://tempuri.org/IWCFService/RemoveAddressUserLink" style="document" />
+    <wsdl:operation name="AddAddressToUser">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/AddAddressToUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -201,8 +270,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IWCFService/GetData" style="document" />
+    <wsdl:operation name="AddUserToAddress">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/AddUserToAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderToAddress">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/AddOrderToAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrderFromUser">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/RemoveOrderFromUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAddressFromUser">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/RemoveAddressFromUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromAddress">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/RemoveUserFromAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrderFromAddress">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/RemoveOrderFromAddress" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -214,6 +328,15 @@
   <wsdl:binding name="NetTcpBinding_IWCFService" type="tns:IWCFService">
     <wsp:PolicyReference URI="#NetTcpBinding_IWCFService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetData">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/GetData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/AddUser" style="document" />
       <wsdl:input>
@@ -268,8 +391,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddAddressUserLink">
-      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddAddressUserLink" style="document" />
+    <wsdl:operation name="AddOrderToUser">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddOrderToUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -277,8 +400,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveAddressUserLink">
-      <soap12:operation soapAction="http://tempuri.org/IWCFService/RemoveAddressUserLink" style="document" />
+    <wsdl:operation name="AddAddressToUser">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddAddressToUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -286,8 +409,53 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <soap12:operation soapAction="http://tempuri.org/IWCFService/GetData" style="document" />
+    <wsdl:operation name="AddUserToAddress">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddUserToAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderToAddress">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddOrderToAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrderFromUser">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/RemoveOrderFromUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAddressFromUser">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/RemoveAddressFromUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromAddress">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/RemoveUserFromAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOrderFromAddress">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/RemoveOrderFromAddress" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
